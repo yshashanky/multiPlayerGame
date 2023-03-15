@@ -17,7 +17,11 @@ def main():
     run = True
     n = Network()
 
+    p = n.getP()
+
     while run:
+        p2 = n.send(p)
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 rum = False
