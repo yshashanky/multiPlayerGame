@@ -51,7 +51,13 @@ def threader_client(conn, player):
             break
     
     print("Lost connection")
-    currentPlayer -= 1
+    if player == 1:
+        currentPlayer -= 1
+    if player == 0 and currentPlayer == 1:
+        currentPlayer -= 1
+    if player == 0 and currentPlayer == 2:
+        currentPlayer -= 2
+    
     conn.close()
 
 while True:
