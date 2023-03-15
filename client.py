@@ -16,7 +16,7 @@ class Player():
         self.height = height
         self.color = color
         self.rect = (x, y, width, height)
-        self.val = 0.1
+        self.val = 1
 
     def draw(self, win):
         pygame.draw.rect(win, self.color, self.rect)
@@ -72,8 +72,8 @@ def main():
 
     n = Network()
     startPos = read_pos(n.getPos())
-    p = Player(startPos[0], startPos[1], 100, 100, (180,200,130))
-    p2 = Player(0, 0, 100, 100, (180,200,0))
+    p = Player(startPos[0], startPos[1], 100, 100, (0,255,0))
+    p2 = Player(0, 0, 100, 100, (255,0,0))
 
     while run:
         p2pos = read_pos(n.send(make_pos((p.x, p.y))))

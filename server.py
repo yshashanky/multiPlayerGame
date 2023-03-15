@@ -7,6 +7,9 @@ port = 5555
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+global currentPlayer
+currentPlayer = 0
+
 try:
     s.bind((server, port))
 except socket.error as e:
@@ -25,6 +28,8 @@ def make_pos(tup):
 pos = [(0,0), (100,100)]
 
 def threader_client(conn, player):
+    global currentPlayer
+
     conn.send(str.encode(make_pos(pos[player])))
     reply = ""
     while True:
@@ -34,6 +39,7 @@ def threader_client(conn, player):
 
             if not data:
                 print("Disconnected")
+                currentPlayer -= 1
                 break
             else:
                 if player == 1:
@@ -50,9 +56,8 @@ def threader_client(conn, player):
             break
     
     print("Lost connection")
+    currentPlayer -= 1
     conn.close()
-
-currentPlayer = 0 
 
 while True:
     conn, addr = s.accept()
