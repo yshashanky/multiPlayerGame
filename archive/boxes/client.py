@@ -15,7 +15,6 @@ def redrawWindow(win, player, player2):
 def main():
     run = True
     n = Network()
-
     p = n.getP()
 
     while run:
